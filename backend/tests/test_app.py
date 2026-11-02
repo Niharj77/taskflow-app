@@ -77,3 +77,20 @@ def test_delete_task(client):
     response = client.delete(f"/api/tasks/{task_id}")
 
     assert response.status_code == 200
+def test_task_stats(client):
+    client.post(
+        "/api/tasks",
+        json={"title": "Learn Docker", "status": "Pending"}
+    )
+
+    client.post(
+        "/api/tasks",
+        json={"title": "Learn AWS", "status": "Completed"}
+    )
+
+    response = client.get("/api/stats")
+
+    assert response.status_code == 200
+    assert response.json["total"] == 2
+    assert response.json["pending"] == 1
+    assert response.json["completed"] == 1

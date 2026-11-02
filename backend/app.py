@@ -84,6 +84,24 @@ def update_task(task_id):
 
     return jsonify(task)
 
+@app.route("/api/stats", methods=["GET"])
+def get_stats():
+    return jsonify({
+        "total": len(tasks),
+        "pending": len([
+            t for t in tasks
+            if t["status"] == "Pending"
+        ]),
+        "in_progress": len([
+            t for t in tasks
+            if t["status"] == "In Progress"
+        ]),
+        "completed": len([
+            t for t in tasks
+            if t["status"] == "Completed"
+        ])
+    })
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
