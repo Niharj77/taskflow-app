@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow | Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2>TaskFlow</h2>
+        <p class="menu-title">WORKSPACE</p>
+        <a class="active" href="#">Dashboard</a>
+        <a href="#">My Tasks</a>
+        <a href="#">Projects</a>
+        <a href="#">Settings</a>
+    </div>
+
+    <main class="main-content">
+        <header>
+            <div>
+                <h1>Dashboard</h1>
+                <p>Welcome back! Here's your task overview.</p>
+            </div>
+            <button id="addTaskBtn">+ Add Task</button>
+        </header>
+
+        <section class="stats">
+            <div class="stat-card">
+                <p>Total Tasks</p>
+                <h2 id="totalTasks">0</h2>
+            </div>
+            <div class="stat-card">
+                <p>Pending</p>
+                <h2 id="pendingTasks">0</h2>
+            </div>
+            <div class="stat-card">
+                <p>In Progress</p>
+                <h2 id="progressTasks">0</h2>
+            </div>
+            <div class="stat-card">
+                <p>Completed</p>
+                <h2 id="completedTasks">0</h2>
+            </div>
+        </section>
+
+        <section class="task-section">
+            <h2>My Tasks</h2>
+
+            <div id="taskList">
+                <p class="empty">No tasks yet. Add your first task!</p>
+            </div>
+        </section>
+
+        <div id="taskModal" class="modal hidden">
+            <div class="modal-content">
+                <h2>Create New Task</h2>
+
+                <input id="taskTitle" type="text"
+                       placeholder="Enter task title">
+
+                <select id="taskPriority">
+                    <option value="Low">Low Priority</option>
+                    <option value="Medium">Medium Priority</option>
+                    <option value="High">High Priority</option>
+                </select>
+
+                <select id="taskStatus">
+                    <option value="Pending">Pending</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Completed">Completed</option>
+                </select>
+
+                <div class="modal-actions">
+                    <button id="saveTaskBtn">Save Task</button>
+                    <button id="closeModalBtn" class="cancel">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
